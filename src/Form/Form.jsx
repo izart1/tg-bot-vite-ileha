@@ -12,15 +12,15 @@ const Form = () => {
         const data = {
             country, street, subject
         };
-        tg.sendDate(JSON.stringify(data));
-    }, []);
+        tg.sendData(JSON.stringify(data));
+    }, [country, street, subject]);
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData);
         return () => {
             tg.offEvent('mainButtonClicked', onSendData);
         };
-    }, []);
+    }, [onSendData]);
 
     useEffect(() => {
         tg.MainButton.setParams({
